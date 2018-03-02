@@ -1,0 +1,85 @@
+<html>
+
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+	<body>
+		<div class = 'pane'>
+		<h1>{{ collection.name }}</h1>
+
+		{% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% if items !=[] %}
+
+		<a href = "{{url_for('newCollectionItem', collection_id = collection.id )}}">Create New Item</a>   <!--wrapped in double quotes-->
+	</br></br>
+
+	<h2>Clothing</h2>
+
+		{% for i in items %}
+		{% if i.category == 'Clothing' %}
+
+		<p>{{i.name}}</p>
+
+
+		<p>{{i.description}}</p>
+
+
+		<p>{{i.price}}</p>
+
+		<a href="{{url_for('editCollectionItem', collection_id = collection.id, items_id=i.id ) }}" >Edit</a> <!--wrapped in single quotes, previously item_id-->
+	</br>
+	<a href="{{url_for('deleteCollectionItem', collection_id = collection.id, items_id=i.id ) }}" >Delete</a> <!--previously item_id-->
+</br>
+</br>
+		{% endif %}
+
+		{% endfor %}
+
+
+
+		</br></br>
+
+	<h2>Accessories</h2>
+
+		{% for i in items %}
+		{% if i.category == 'Accessories' %}
+
+		<p>{{i.name}}</p>
+
+
+		<p>{{i.description}}</p>
+
+
+		<p>{{i.price}}</p>
+
+		<a href='{{url_for('editCollectionItem', collection_id = collection.id, item_id=i.id ) }}' >Edit</a>
+	</br>
+	<a href='{{url_for('deleteCollectionItem', collection_id = collection.id, item_id=i.id ) }}' >Delete</a>
+</br>
+</br>
+        {% endif %}
+
+		{% endfor %}
+
+
+
+		</br></br>
+
+		{% else %}
+		<p> You currently have no collection items. <p>
+		<a href = "{{url_for('newCollectionItem', collection_id = collection.id )}}">Create New Item</a>
+			{% endif %}
+</div>
+	</body>
+
+</html>

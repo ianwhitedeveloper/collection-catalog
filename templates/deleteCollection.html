@@ -1,0 +1,24 @@
+<html>
+
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+
+<body>
+<h2> Are you sure you want to delete {{collection.name}}? </h2>
+
+<br><br>
+
+<form action="#" method = 'post'>
+
+<input type='submit', value = 'Delete'>
+
+
+
+
+</form>
+
+<a href = '#'> Cancel </a> 							<!--need to add redirect back to main collection page-->
+</body>
+
+</html>
