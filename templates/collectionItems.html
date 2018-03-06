@@ -26,7 +26,7 @@
 	<h2>Clothing</h2>
 
 		{% for i in items %}
-		{% if i.category == 'Clothing' %}
+		{% if i.category.lower() == 'clothing' %}
 
 		<p>{{i.name}}</p>
 
@@ -36,9 +36,9 @@
 
 		<p>{{i.price}}</p>
 
-		<a href="{{url_for('editCollectionItem', collection_id = collection.id, items_id=i.id ) }}" >Edit</a> <!--wrapped in single quotes, previously item_id-->
+		<a href="{{url_for('editCollectionItem', collection_id = collection.id, item_id=i.id ) }}" >Edit</a> <!--wrapped in single quotes, previously item_id-->
 	</br>
-	<a href="{{url_for('deleteCollectionItem', collection_id = collection.id, items_id=i.id ) }}" >Delete</a> <!--previously item_id-->
+	<a href="{{url_for('deleteCollectionItem', collection_id = collection.id, item_id=i.id ) }}" >Delete</a> <!--previously item_id-->
 </br>
 </br>
 		{% endif %}
@@ -52,7 +52,7 @@
 	<h2>Accessories</h2>
 
 		{% for i in items %}
-		{% if i.category == 'Accessories' %}
+		{% if i.category.lower() == 'accessories' %}
 
 		<p>{{i.name}}</p>
 

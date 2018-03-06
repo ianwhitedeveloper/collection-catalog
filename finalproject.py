@@ -135,10 +135,10 @@ def newCollectionItem(collection_id):
 
 # Edit a collection item
 
-@app.route('/collection/<int:collection_id>/items/<int:item>/edit',
+@app.route('/collection/<int:collection_id>/items/<int:item_id>/edit',
            methods=['GET', 'POST'])
 def editCollectionItem(collection_id, item_id):
-    editedCollectionItem = session.query(CollectionItem).filter_by(id=item).one()
+    editedCollectionItem = session.query(CollectionItem).filter_by(id=item_id).one()
     if request.method == 'POST':
         if request.form['name']:
             editedCollectionItem.name = request.form['name']
